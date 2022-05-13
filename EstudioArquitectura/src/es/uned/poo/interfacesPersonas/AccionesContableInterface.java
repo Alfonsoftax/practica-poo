@@ -16,6 +16,7 @@ public interface AccionesContableInterface {
 	public void actualizarCostesCertificados();
 	public void mostrarMenuContable(Contable contable);
 	public Integer establecerCostesCertificado(Contable contable);
+	
 
 	
 }

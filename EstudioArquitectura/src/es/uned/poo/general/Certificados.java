@@ -15,6 +15,7 @@ public class Certificados {
 	Arquitecto arquitecto;
 	Contable contable;
 	Integer costeCertificado;
+	
 
 	//Histórico de vivienda Pensar cómo hacer
 	/**

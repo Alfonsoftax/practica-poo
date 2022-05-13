@@ -237,6 +237,7 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 		Arquitecto arquitecto;
 		Contable contable;
 		Integer costeCertificado;
+		
 
 		fechaSolicitud = LocalDate.of(1, 1, 1);
 		System.out.println("La fecha de solicitud es del: " + fechaSolicitud);
