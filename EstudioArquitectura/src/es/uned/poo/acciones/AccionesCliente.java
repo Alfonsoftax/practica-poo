@@ -185,8 +185,7 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; 
-	    
-	    
+	   	    
 	    List<Certificados> cer = new ArrayList<>();
 	    
  	    while(!salir) {
