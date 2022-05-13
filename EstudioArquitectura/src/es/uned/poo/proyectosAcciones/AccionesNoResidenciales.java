@@ -91,7 +91,6 @@ public class AccionesNoResidenciales {
         	System.out.println("");
         }
         System.out.println("¿Aparejador?: ");
-        
         if(!listaAparejadores.isEmpty()) {
 	    	aparejador  = this.acciones.obtenerAparejador(listaAparejadores);
 			System.out.println("El aparejador es: "+ aparejador.getDni()+ " | " + aparejador.getNombre() + " | " + aparejador.getApellidos());

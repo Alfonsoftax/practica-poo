@@ -16,7 +16,6 @@ public class Certificados {
 	Contable contable;
 	Integer costeCertificado;
 	
-
 	//Histórico de vivienda Pensar cómo hacer
 	/**
 	 * @param fechaSolicitud

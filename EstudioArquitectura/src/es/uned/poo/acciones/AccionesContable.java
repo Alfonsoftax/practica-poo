@@ -50,7 +50,6 @@ public class AccionesContable implements AccionesContableInterface{
 		costeProyecto = sn.nextInt();
 		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
 		return costeProyecto;
-		
 	}
 
 	@Override

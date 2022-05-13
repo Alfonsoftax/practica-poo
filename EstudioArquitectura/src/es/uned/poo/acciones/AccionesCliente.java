@@ -189,7 +189,6 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 	    
 	    List<Certificados> cer = new ArrayList<>();
 	    
-
  	    while(!salir) {
 			System.out.println("1. Solicitar Certificado de habitabilidad");
 	        System.out.println("2. Solicitar Certificado de eficiencia energética");
