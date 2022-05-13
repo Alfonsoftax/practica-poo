@@ -36,7 +36,6 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 	    boolean salir = false;
 	    int opcion; 
 	    int opcion2; 
-	    
 	    while(!salir) {
 			System.out.println("1. Administrador");
 	        System.out.println("2. Arquitecto");
