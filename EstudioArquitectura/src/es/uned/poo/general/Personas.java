@@ -35,4 +35,10 @@ public class Personas {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+
+	@Override
+	public String toString() {
+		return "Personas [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + "]";
+	}
+	
 }

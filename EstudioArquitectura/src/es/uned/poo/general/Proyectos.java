@@ -286,7 +286,7 @@ public class Proyectos {
 				+ duracionPrevista + ", presupuesto=" + presupuesto + ", fechaInicioContratado=" + fechaInicioContratado
 				+ ", duracion=" + duracion + ", cliente=" + cliente.getNombre() + ", arquitecto=" + arquitecto.getNombre() + ", direccion="
 				+ direccion + ", contable=" + contable.getNombre() + ", costeProyecto=" + costeProyecto + ", aparejador="
-				+ aparejador.getNombre() + ", tipo=" + tipo + ", certificados=" + certificados.get(0) + ", nombre=" + nombre + "]";
+				+ aparejador.getNombre() + ", tipo=" + tipo + ", certificados=" + certificados + ", nombre=" + nombre + "]";
 	}
 
 	

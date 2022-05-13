@@ -146,7 +146,7 @@ public class Login {
 	}
 	
 	
-	public void opcionesLoginAparejador(List<Aparejador> listaAparejador) {
+	public void opcionesLoginAparejador(List<Aparejador> listaAparejador, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; //Guardaremos la opcion del usuario
@@ -160,7 +160,7 @@ public class Login {
 	        System.out.println("Escribe una de las opciones");
 	        opcion = sn.nextInt();
 	        if(opcion == 1) {
-	        	this.loguearseAparejador(dni, nombre, apellidos, listaAparejador);
+	        	this.loguearseAparejador(dni, nombre, apellidos, listaAparejador, listaClientes);
 	        } else if(opcion == 2) {
 	        	salir = true;
 	        }	        	        
@@ -169,7 +169,7 @@ public class Login {
 	
 	
 	
-	public void loguearseAparejador(String dni, String nombre, String apellidos, List<Aparejador> listaAparejador) {
+	public void loguearseAparejador(String dni, String nombre, String apellidos, List<Aparejador> listaAparejador, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Indique el DNI: ");
 		dni = sn.next();
@@ -184,7 +184,7 @@ public class Login {
 					if(ap.getNombre().equalsIgnoreCase(nombre)) {
 						if(ap.getApellidos().equalsIgnoreCase(apellidos)) {
 							System.out.println("Bienvenido al sistema Aparejador: " + ap.getNombre());
-				        	accionesAparejador.mostrarMenuAparejador(ap);
+				        	accionesAparejador.mostrarMenuAparejador(ap, listaClientes);
 						}
 					}
 				}
@@ -195,7 +195,7 @@ public class Login {
 		}				
 	}
 	
-	public void opcionesLoginArquitecto(List<Arquitecto> listaArquitectos) {
+	public void opcionesLoginArquitecto(List<Arquitecto> listaArquitectos, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; //Guardaremos la opcion del usuario
@@ -209,14 +209,14 @@ public class Login {
 	        System.out.println("Escribe una de las opciones");
 	        opcion = sn.nextInt();
 	        if(opcion == 1) {
-	        	this.loguearseArquitecto(dni, nombre, apellidos, listaArquitectos);
+	        	this.loguearseArquitecto(dni, nombre, apellidos, listaArquitectos, listaClientes);
 	        } else if(opcion == 2) {
 	        	salir = true;
 	        }	        	        
 	    }
 	}
 	
-	public void loguearseArquitecto(String dni, String nombre, String apellidos, List<Arquitecto> listaArquitecto) {
+	public void loguearseArquitecto(String dni, String nombre, String apellidos, List<Arquitecto> listaArquitecto, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Indique el DNI: ");
 		dni = sn.next();
@@ -231,7 +231,7 @@ public class Login {
 					if(arq.getNombre().equalsIgnoreCase(nombre)) {
 						if(arq.getApellidos().equalsIgnoreCase(apellidos)) {
 							System.out.println("Bienvenido al sistema Arquitecto: " + arq.getNombre());
-							accionesArquitecto.mostrarMenuArquitecto(arq);
+							accionesArquitecto.mostrarMenuArquitecto(arq, listaClientes);
 						}
 					}
 				}
@@ -242,7 +242,7 @@ public class Login {
 		}				
 	}
 	
-	public void opcionesLoginContable(List<Contable> listaContables) {
+	public void opcionesLoginContable(List<Contable> listaContables, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; //Guardaremos la opcion del usuario
@@ -256,7 +256,7 @@ public class Login {
 	        System.out.println("Escribe una de las opciones");
 	        opcion = sn.nextInt();
 	        if(opcion == 1) {
-	        	this.loguearseContable(dni, nombre, apellidos, listaContables);
+	        	this.loguearseContable(dni, nombre, apellidos, listaContables, listaClientes);
 	        } else if(opcion == 2) {
 	        	salir = true;
 	        }	        	        
@@ -264,7 +264,7 @@ public class Login {
 	}
 	
 	
-	public void loguearseContable(String dni, String nombre, String apellidos, List<Contable> listaContables) {
+	public void loguearseContable(String dni, String nombre, String apellidos, List<Contable> listaContables, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Indique el DNI: ");
 		dni = sn.next();
@@ -279,7 +279,7 @@ public class Login {
 					if(contable.getNombre().equalsIgnoreCase(nombre)) {
 						if(contable.getApellidos().equalsIgnoreCase(apellidos)) {
 							System.out.println("Bienvenido al sistema Contable: " + contable.getNombre());
-							accionesContable.mostrarMenuContable(contable);
+							accionesContable.mostrarMenuContable(contable, listaClientes);
 						}
 					}
 				}

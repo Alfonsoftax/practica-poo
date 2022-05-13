@@ -34,6 +34,8 @@ public class Menu {
 		Cliente cliente2 = new Cliente("2", "2", "2");
 
 		Arquitecto arquitecto = new Arquitecto("1", "1", "1");
+		Arquitecto arquitecto2 = new Arquitecto("2", "2", "2");
+
 		Aparejador aparejador = new Aparejador("1", "1", "1");
 		Contable contable = new Contable("1", "1", "1");
 
@@ -41,6 +43,7 @@ public class Menu {
 		listaClientes.add(cliente);
 		listaClientes.add(cliente2);
 		listaArquitectos.add(arquitecto);
+		listaArquitectos.add(arquitecto2);
 		listaAparejadores.add(aparejador);
 		listaContables.add(contable);
 
@@ -60,11 +63,11 @@ public class Menu {
 	        if(opcion == 1) {
 	        	login.opcionesLoginAdministrador(listaAdministradores,listaArquitectos,listaAparejadores,listaContables, listaClientes);
 	        } else if(opcion == 2) {
-	        	login.opcionesLoginArquitecto(listaArquitectos);
+	        	login.opcionesLoginArquitecto(listaArquitectos, listaClientes);
 	        } else if(opcion == 3) {
-	        	login.opcionesLoginAparejador(listaAparejadores);
+	        	login.opcionesLoginAparejador(listaAparejadores, listaClientes);
 	        } else if(opcion == 4) {
-	        	login.opcionesLoginContable(listaContables);
+	        	login.opcionesLoginContable(listaContables, listaClientes);
 	        } else if(opcion == 5) {
 	        	login.opcionesLoginCliente(listaClientes, listaArquitectos, listaAparejadores, listaContables, listaCertificados, listaProyectos);
 	        }
