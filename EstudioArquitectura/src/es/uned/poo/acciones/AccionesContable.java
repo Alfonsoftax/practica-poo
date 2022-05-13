@@ -51,7 +51,6 @@ public class AccionesContable implements AccionesContableInterface{
 		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
 		return costeProyecto;
 	}
-
 	@Override
 	public void actualizarCostesCertificados() {
 		// TODO Auto-generated method stub
