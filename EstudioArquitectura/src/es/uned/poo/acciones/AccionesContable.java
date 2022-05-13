@@ -64,7 +64,7 @@ public class AccionesContable implements AccionesContableInterface{
 		Integer costeCertificado;
 		System.out.println("¿Cuál es el precio que establece el contable" + contable.getNombre() + "?");
 		costeCertificado = sn.nextInt();
-		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
+		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: " + costeCertificado);
 		return costeCertificado;		
 	}
 
