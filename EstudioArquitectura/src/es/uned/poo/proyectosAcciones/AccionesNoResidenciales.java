@@ -49,6 +49,10 @@ public class AccionesNoResidenciales {
         Aparejador aparejador;
         Arquitecto arquitecto;
         Contable contable;
+        String nombre;
+        
+        System.out.println("¿Nombre del proyecto?: ");
+        nombre = sn.next();
         
     	LocalDate fechaEntregaDate = LocalDate.of(1,1,1);
     	fechaEntrega = fechaEntregaDate;
@@ -110,7 +114,7 @@ public class AccionesNoResidenciales {
         finalidad = sn.next(); 
     	
         proyectosNoResidenciales = new NoResidenciales(fechaSolicitud,fechaEntrega,duracionPrevista,presupuesto,fechaInicioContratado,duracion,cliente,arquitecto, 
-        		direccion,contable,costeProyecto,aparejador,superficieTerreno,superficieEdificio,finalidad,tipo);	
+        		direccion,contable,costeProyecto,aparejador,superficieTerreno,superficieEdificio,finalidad,tipo,nombre);	
         
         if(cliente != null && aparejador != null && arquitecto != null && contable != null) {
         	return proyectosNoResidenciales;	

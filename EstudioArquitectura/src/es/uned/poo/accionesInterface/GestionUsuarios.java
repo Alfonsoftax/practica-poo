@@ -13,7 +13,8 @@ import es.uned.poo.personas.Cliente;
 public interface GestionUsuarios {
 
 	
-	public void mostrarMenuGestionUsuarios(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, List<Contable> listaContables);
+	public void mostrarMenuGestionUsuarios(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, 
+			List<Contable> listaContables, List<Cliente> listaClientes);
 	public void mostrarMenuClientes(Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, List<Contable> listaContables,List<Certificados> listaCertificados, List<Proyectos> listaProyectos);
 	public void darAlta();

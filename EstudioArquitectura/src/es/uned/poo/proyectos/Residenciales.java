@@ -38,9 +38,9 @@ public class Residenciales extends Proyectos{
 	public Residenciales(LocalDate fechaSolicitud, LocalDate fechaEntrega, Integer duracionPrevista, Integer presupuesto,
 			LocalDate fechaInicioContratado, Integer duracion, Cliente cliente, Arquitecto arquitecto, String direccion,
 			Contable contable, Aparejador aparejador, Integer superficie, Integer superficieTerreno, Integer plantas,
-			Integer numeroHabitaciones, Integer numeroBaños, String tipo, Integer costeProyecto) {
+			Integer numeroHabitaciones, Integer numeroBaños, String tipo, Integer costeProyecto, String nombre) {
 		super(fechaSolicitud, fechaEntrega, duracionPrevista, presupuesto, fechaInicioContratado, duracion, cliente,
-				arquitecto, direccion, contable, costeProyecto, aparejador, tipo);
+				arquitecto, direccion, contable, costeProyecto, aparejador, tipo, nombre);
 		this.superficie = superficie;
 		this.superficieTerreno = superficieTerreno;
 		this.plantas = plantas;

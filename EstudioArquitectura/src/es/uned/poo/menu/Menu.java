@@ -30,8 +30,23 @@ public class Menu {
 		List<Certificados> listaCertificados = new ArrayList<>();
 		List<Proyectos> listaProyectos = new ArrayList<>();
 
+		Cliente cliente = new Cliente("1", "1", "1");
+		Cliente cliente2 = new Cliente("2", "2", "2");
 
-	    while(!salir){
+		Arquitecto arquitecto = new Arquitecto("1", "1", "1");
+		Aparejador aparejador = new Aparejador("1", "1", "1");
+		Contable contable = new Contable("1", "1", "1");
+
+
+		listaClientes.add(cliente);
+		listaClientes.add(cliente2);
+		listaArquitectos.add(arquitecto);
+		listaAparejadores.add(aparejador);
+		listaContables.add(contable);
+
+	    
+		
+		while(!salir){
 	         
 	        System.out.println("1. Entrar como administrador");
 	        System.out.println("2. Entrar como arquitecto");
@@ -43,7 +58,7 @@ public class Menu {
 	        System.out.println("Escribe una de las opciones");
 	        opcion = sn.nextInt();
 	        if(opcion == 1) {
-	        	login.opcionesLoginAdministrador(listaAdministradores,listaArquitectos,listaAparejadores,listaContables);
+	        	login.opcionesLoginAdministrador(listaAdministradores,listaArquitectos,listaAparejadores,listaContables, listaClientes);
 	        } else if(opcion == 2) {
 	        	login.opcionesLoginArquitecto(listaArquitectos);
 	        } else if(opcion == 3) {

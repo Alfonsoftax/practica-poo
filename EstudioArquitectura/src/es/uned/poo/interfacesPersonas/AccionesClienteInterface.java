@@ -17,13 +17,22 @@ public interface AccionesClienteInterface {
 	public List<Proyectos> solicitarProyectoArquitectonico(Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, 
 			List<Contable> listaContables);
-	public List<Certificados> solicitarCertificado(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos, List<Contable> listaContables, Cliente cliente);
+	
+	public List<Certificados> solicitarCertificado(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos, 
+			List<Contable> listaContables, Cliente cliente, Proyectos proyecto);
+	
 	public Residenciales solicitarProyectoResidencial(Residenciales proyectosResidenciales, Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, 
 			List<Contable> listaContables);
+	
 	public NoResidenciales solicitarProyectoNoResidencial(NoResidenciales proyectosNoResidenciales, Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, List<Contable> listaContables);
+	
 	public Rehabilitacion solicitarProyectoRehabilitacion(Rehabilitacion proyectosRehabilitacion, Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, List<Contable> listaContables);
+	
 	public void altaCliente(String nombre, String apellidos, String dni,List<Cliente> listaClientes);
+	
+	public Proyectos seleccioneProyecto(List<Proyectos> listaProyectos);
+
 }

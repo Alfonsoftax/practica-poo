@@ -1,6 +1,7 @@
 package es.uned.poo.general;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
@@ -22,12 +23,13 @@ public class Proyectos {
 	Integer costeProyecto;
 	Aparejador aparejador;
 	String tipo;
+	List<Certificados> certificados;
+	String nombre;
 
-	
-	
+
 	public Proyectos(LocalDate fechaSolicitud, LocalDate fechaEntrega, Integer duracionPrevista, Integer presupuesto,
 			LocalDate fechaInicioContratado, Integer duracion, Cliente cliente, Arquitecto arquitecto, String direccion,
-			Contable contable, Integer costeProyecto, Aparejador aparejador, String tipo) {
+			Contable contable, Integer costeProyecto, Aparejador aparejador, String tipo, List<Certificados> certificados, String nombre) {
 		super();
 		this.fechaSolicitud = fechaSolicitud;
 		this.fechaEntrega = fechaEntrega;
@@ -42,8 +44,33 @@ public class Proyectos {
 		this.aparejador = aparejador;
 		this.costeProyecto = costeProyecto;
 		this.tipo = tipo;
+		this.certificados = certificados;
+		this.nombre = nombre;
+	}	
+	
+	public Proyectos(LocalDate fechaSolicitud, LocalDate fechaEntrega, Integer duracionPrevista, Integer presupuesto,
+			LocalDate fechaInicioContratado, Integer duracion, Cliente cliente, Arquitecto arquitecto, String direccion,
+			Contable contable, Integer costeProyecto, Aparejador aparejador, String tipo, String nombre) {
+		super();
+		this.fechaSolicitud = fechaSolicitud;
+		this.fechaEntrega = fechaEntrega;
+		this.duracionPrevista = duracionPrevista;
+		this.presupuesto = presupuesto;
+		this.fechaInicioContratado = fechaInicioContratado;
+		this.duracion = duracion;
+		this.cliente = cliente;
+		this.arquitecto = arquitecto;
+		this.direccion = direccion;
+		this.contable = contable;
+		this.aparejador = aparejador;
+		this.costeProyecto = costeProyecto;
+		this.tipo = tipo;
+		this.nombre = nombre;
 	}
-
+	
+	public Proyectos() {
+		super();
+	}
 	/**
 	 * @return the fechaSolicitud
 	 */
@@ -224,6 +251,42 @@ public class Proyectos {
 	 */
 	public void setCosteProyecto(Integer costeProyecto) {
 		this.costeProyecto = costeProyecto;
+	}
+
+	/**
+	 * @return the certificados
+	 */
+	public  List<Certificados> getCertificados() {
+		return certificados;
+	}
+
+	/**
+	 * @param certificados the certificados to set
+	 */
+	public void setCertificados(List<Certificados> certificados) {
+		this.certificados = certificados;
+	}
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
+	public String toString() {
+		return "Proyectos [fechaSolicitud=" + fechaSolicitud + ", fechaEntrega=" + fechaEntrega + ", duracionPrevista="
+				+ duracionPrevista + ", presupuesto=" + presupuesto + ", fechaInicioContratado=" + fechaInicioContratado
+				+ ", duracion=" + duracion + ", cliente=" + cliente.getNombre() + ", arquitecto=" + arquitecto.getNombre() + ", direccion="
+				+ direccion + ", contable=" + contable.getNombre() + ", costeProyecto=" + costeProyecto + ", aparejador="
+				+ aparejador.getNombre() + ", tipo=" + tipo + ", certificados=" + certificados.get(0) + ", nombre=" + nombre + "]";
 	}
 
 	

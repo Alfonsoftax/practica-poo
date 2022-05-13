@@ -6,6 +6,7 @@ import es.uned.poo.empleados.Administrador;
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
 import es.uned.poo.empleados.Contable;
+import es.uned.poo.personas.Cliente;
 
 public interface AccionesAdministradorInterface {
 
@@ -46,5 +47,7 @@ public interface AccionesAdministradorInterface {
 	public void modificaContable(String nombre, String apellidos, String dni,List<Contable> listaContable);	
 	public void verMenuContables(List<Contable> listaContable);
 
+	// métodos para contables
+	public void verMenuClientes(List<Cliente> listaClientes);
 
 }

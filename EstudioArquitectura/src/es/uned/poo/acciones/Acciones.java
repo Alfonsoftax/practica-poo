@@ -73,7 +73,8 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 	}
 
 	@Override
-	public void mostrarMenuGestionUsuarios(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, List<Contable> listaContables) {
+	public void mostrarMenuGestionUsuarios(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, 
+			List<Contable> listaContables, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; 
@@ -85,7 +86,8 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		        System.out.println("2. Arquitecto");
 		        System.out.println("3. Aparejador");
 		        System.out.println("4. Contable");
-		        System.out.println("5. Salir");
+		        System.out.println("5. Ver listado de clientes");
+		        System.out.println("6. Salir");
 	
 		        System.out.println("Escribe una de las opciones");
 		        opcion = sn.nextInt();
@@ -98,6 +100,8 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		        } else if(opcion == 4) {
 		        	accionesAdministrador.verMenuContables(listaContables);
 		        } else if(opcion == 5) {
+		        	accionesAdministrador.verMenuClientes(listaClientes);
+		        } else if(opcion == 6) {
 		        	salir = true;
 		        }	        	        
 		    }		
@@ -113,6 +117,7 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; 
+	    Proyectos proyecto;
 	    if(cliente != null) {		
 		    while(!salir) {
 		    	System.out.println("Seleccione una opción sobre la que quieras realizar una opción");
@@ -125,14 +130,19 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		        opcion = sn.nextInt();
 		        if(opcion == 1) {
 		        	listaProyectos = accionesCliente.solicitarProyectoArquitectonico(cliente, listaAparejadores, listaArquitectos, listaContables);
+				    cliente.setListaProyectos(listaProyectos);
 		        } else if(opcion == 2) {
-		        	listaCertificados = accionesCliente.solicitarCertificado(listaAparejadores, listaArquitectos, listaContables, cliente);
+		        	proyecto = this.accionesCliente.seleccioneProyecto(cliente.getListaProyectos());
+		        	if(proyecto != null) {
+		        		listaCertificados = accionesCliente.solicitarCertificado(listaAparejadores, listaArquitectos, listaContables, cliente, proyecto);
+		    		    cliente.setListaCertificados(listaCertificados);
+		        	} else {
+				        System.out.println("No existen proyectos al que añadir un certificado");
+		        	}
 		        } else if(opcion == 3) {
 		        	salir = true;
 		        }		        
 		    }	
-		    cliente.setListaProyectos(listaProyectos);
-		    cliente.setListaCertificados(listaCertificados);
 		}
 	}
 

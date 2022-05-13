@@ -13,6 +13,7 @@ import es.uned.poo.acciones.AccionesContable;
 import es.uned.poo.empleados.Administrador;
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
+import es.uned.poo.empleados.Clientes;
 import es.uned.poo.empleados.Contable;
 import es.uned.poo.general.Certificados;
 import es.uned.poo.general.Proyectos;
@@ -37,7 +38,8 @@ public class Login {
 	String dni="";
 	String apellidos="";
 	
-	public void opcionesLoginAdministrador(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, List<Contable> listaContables) {
+	public void opcionesLoginAdministrador(List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, 
+			List<Aparejador> listaAparejadores, List<Contable> listaContables, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; //Guardaremos la opcion del usuario
@@ -52,7 +54,8 @@ public class Login {
 	        System.out.println("Escribe una de las opciones");
 	        opcion = sn.nextInt();
 	        if(opcion == 1) {
-	        	this.loguearseAdministrador(dni, nombre, apellidos, listaAdministradores, listaArquitectos, listaAparejadores, listaContables);
+	        	this.loguearseAdministrador(dni, nombre, apellidos, listaAdministradores, listaArquitectos, 
+	        			listaAparejadores, listaContables, listaClientes);
 	        } else if(opcion == 2) {
 	        	accionesAdministrador.altaAdministrador(nombre, dni, apellidos, listaAdministradores);
 	        } else if(opcion == 5) {
@@ -61,7 +64,8 @@ public class Login {
 	    }
 	}
 	
-	public void loguearseAdministrador(String dni, String nombre, String apellidos, List<Administrador> listaAdministradores, List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, List<Contable> listaContables) {
+	public void loguearseAdministrador(String dni, String nombre, String apellidos, List<Administrador> listaAdministradores,
+			List<Arquitecto> listaArquitectos, List<Aparejador> listaAparejadores, List<Contable> listaContables, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 		System.out.println("Indique el DNI: ");
 		dni = sn.next();
@@ -76,7 +80,8 @@ public class Login {
 					if(adm.getNombre().equalsIgnoreCase(nombre)) {
 						if(adm.getApellidos().equalsIgnoreCase(apellidos)) {
 							System.out.println("Bienvenido al sistema Administrador: " + adm.getNombre());
-				        	acciones.mostrarMenuGestionUsuarios(listaAdministradores, listaArquitectos, listaAparejadores, listaContables);
+				        	acciones.mostrarMenuGestionUsuarios(listaAdministradores, listaArquitectos, listaAparejadores, 
+				        			listaContables, listaClientes);
 						}
 					}
 				}

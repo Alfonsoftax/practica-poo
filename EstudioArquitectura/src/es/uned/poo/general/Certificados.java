@@ -107,6 +107,12 @@ public class Certificados {
 	public void setCosteCertificado(Integer costeCertificado) {
 		this.costeCertificado = costeCertificado;
 	}
+	@Override
+	public String toString() {
+		return "Certificados [fechaSolicitud=" + fechaSolicitud + ", fechaEntrega=" + fechaEntrega + ", cliente="
+				+ cliente.getNombre() + ", arquitecto=" + arquitecto.getNombre() + ", contable=" + contable.getNombre() + ", costeCertificado="
+				+ costeCertificado + "]";
+	}
 	
 	
 }

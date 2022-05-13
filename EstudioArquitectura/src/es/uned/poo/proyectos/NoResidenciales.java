@@ -36,9 +36,9 @@ public class NoResidenciales extends Proyectos{
 			Integer presupuesto, LocalDate fechaInicioContratado, Integer duracion, Cliente cliente,
 			Arquitecto arquitecto, String direccion, Contable contable, Integer costeProyecto, Aparejador aparejador,
 			Integer superficieTerreno, Integer superficieEdificio, String finalidad,
-			String tipo) {
+			String tipo, String nombre) {
 		super(fechaSolicitud, fechaEntrega, duracionPrevista, presupuesto, fechaInicioContratado, duracion, cliente, arquitecto,
-				direccion, contable, costeProyecto, aparejador, tipo);
+				direccion, contable, costeProyecto, aparejador, tipo, nombre);
 		this.superficieTerreno = superficieTerreno;
 		this.superficieEdificio = superficieEdificio;
 		this.finalidad = finalidad;

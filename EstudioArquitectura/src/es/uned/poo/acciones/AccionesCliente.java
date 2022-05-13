@@ -181,14 +181,14 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 	}
 
 	@Override
-	public List<Certificados> solicitarCertificado(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos, List<Contable> listaContables, Cliente cliente) {
+	public List<Certificados> solicitarCertificado(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos, 
+			List<Contable> listaContables, Cliente cliente, Proyectos proyecto) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; 
 
 	    
-	    List<Certificados> cer = new ArrayList<>();
-	    
+	    List<Certificados> cer = new ArrayList<>();	    
  	    while(!salir) {
 			System.out.println("1. Solicitar Certificado de habitabilidad");
 	        System.out.println("2. Solicitar Certificado de eficiencia energética");
@@ -212,15 +212,76 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 	        	cer.add(ip);
 	        } else if(opcion == 5) {
 	        	salir = true;
-	        }	        	        
+	        }	 
+	 	    proyecto.setCertificados(cer);
 	    }
 		return cer;	
 	}
 
 	@Override
 	public InformesPericiales solicitarInformePericial(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos, List<Contable> listaContables, Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Acciones acciones = new Acciones();		
+		Scanner sn = new Scanner(System.in);
+		Aparejador aparejador;
+		LocalDate fechaEmisionCertificado;
+		LocalDate fechaSolicitud;
+		LocalDate fechaEntrega;
+		Arquitecto arquitecto;
+		Contable contable;
+		Integer costeCertificado;
+		InformesPericiales certInformesPericiales;
+
+		fechaSolicitud = LocalDate.of(1, 1, 1);
+		System.out.println("La fecha de solicitud es del: " + fechaSolicitud);
+
+		fechaEntrega = LocalDate.of(1, 1, 2);
+		System.out.println("La fecha de entrega es del: " + fechaEntrega);
+
+        System.out.println("¿Arquitecto?: ");   
+        Arquitecto arquitectoprueba = new Arquitecto("1","1","1");
+        listaArquitectos.add(arquitectoprueba);
+        if(!listaArquitectos.isEmpty()) {
+    	arquitecto = acciones.obtenerArquitecto(listaArquitectos);
+		System.out.println("El arquitecto es: "+ arquitecto.getDni()+ " | " + arquitecto.getNombre() + " | " + arquitecto.getApellidos());
+        } else {
+        	arquitecto = null;
+        	System.out.println("La lista de arquitectos está vacía, debe asignarse un arquitecto al proyecto");
+        	System.out.println("");
+        }
+    	
+        System.out.println("¿Contable?: ");     
+        Contable contableprueba = new Contable("1","1","1");
+        listaContables.add(contableprueba);
+        if(!listaContables.isEmpty()) {
+        	accionesContable = new AccionesContable();
+        	contable  = acciones.obtenerContable(listaContables);
+	    	costeCertificado = accionesContable.establecerCostesCertificado(contable);
+			System.out.println("El contable es: "+ contable.getDni()+ " | " + contable.getNombre() + " | " + contable.getApellidos());
+        } else {
+    		costeCertificado = null;
+        	contable = null;
+        	System.out.println("La lista de contables está vacía, debe asignarse un contable al proyecto");
+        	System.out.println("");
+        }
+        System.out.println("¿Aparejador?: ");
+        Aparejador aparejadorprueba = new Aparejador("1","1","1");
+        listaAparejadores.add(aparejadorprueba);
+        if(!listaAparejadores.isEmpty()) {
+	    	aparejador  = acciones.obtenerAparejador(listaAparejadores);
+			System.out.println("El aparejador es: "+ aparejador.getDni()+ " | " + aparejador.getNombre() + " | " + aparejador.getApellidos());
+        } else {
+        	aparejador = null;
+        	System.out.println("La lista de aparejadores está vacía, debe asignarse un aparejador al proyecto");
+        	System.out.println("");
+        }
+
+		fechaEmisionCertificado = LocalDate.of(1, 1, 4);
+		System.out.println("La fecha de emisión del certificado es del: " + fechaEmisionCertificado);
+
+		certInformesPericiales = new InformesPericiales(fechaSolicitud, fechaEntrega, cliente, arquitecto, contable, arquitecto, fechaEmisionCertificado, costeCertificado);
+
+		return certInformesPericiales;
 	}
 
 	@Override
@@ -297,15 +358,158 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 	@Override
 	public InspeccionTecnica solicitarInspeccionTecnica(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos,
 			List<Contable> listaContables, Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		Acciones acciones = new Acciones();		
+		Scanner sn = new Scanner(System.in);
+		LocalDate fechaSolicitud; 
+		LocalDate fechaEntrega; 
+		LocalDate fechaEmision; 
+		Arquitecto arquitecto;
+		Contable contable;
+		Aparejador aparejador;
+		Integer costeCertificado;
+		String categoria;
+		
+		fechaSolicitud = LocalDate.of(1, 1, 1);
+		System.out.println("La fecha de solicitud es del: " + fechaSolicitud);
+
+		fechaEntrega = LocalDate.of(1, 1, 2);
+		System.out.println("La fecha de entrega es del: " + fechaEntrega);
+		
+        System.out.println("¿Arquitecto?: ");   
+        Arquitecto arquitectoprueba = new Arquitecto("1","1","1");
+        listaArquitectos.add(arquitectoprueba);
+        if(!listaArquitectos.isEmpty()) {
+    	arquitecto = acciones.obtenerArquitecto(listaArquitectos);
+		System.out.println("El arquitecto es: "+ arquitecto.getDni()+ " | " + arquitecto.getNombre() + " | " + arquitecto.getApellidos());
+        } else {
+        	arquitecto = null;
+        	System.out.println("La lista de arquitectos está vacía, debe asignarse un arquitecto al proyecto");
+        	System.out.println("");
+        }
+        
+        System.out.println("¿Contable?: ");     
+        Contable contableprueba = new Contable("1","1","1");
+        listaContables.add(contableprueba);
+        if(!listaContables.isEmpty()) {
+        	accionesContable = new AccionesContable();
+        	contable  = acciones.obtenerContable(listaContables);
+	    	costeCertificado = accionesContable.establecerCostesCertificado(contable);
+			System.out.println("El contable es: "+ contable.getDni()+ " | " + contable.getNombre() + " | " + contable.getApellidos());
+        } else {
+    		costeCertificado = null;
+        	contable = null;
+        	System.out.println("La lista de contables está vacía, debe asignarse un contable al proyecto");
+        	System.out.println("");
+        }
+        
+		System.out.println("¿Cuál es la categoría?");
+		categoria = sn.next();
+		
+		fechaEmision = LocalDate.of(1, 1, 2);
+		System.out.println("La fecha de emisión es del: " + fechaEntrega);
+        
+        System.out.println("¿Aparejador?: ");
+        Aparejador aparejadorprueba = new Aparejador("1","1","1");
+        listaAparejadores.add(aparejadorprueba);
+        if(!listaAparejadores.isEmpty()) {
+	    	aparejador  = acciones.obtenerAparejador(listaAparejadores);
+			System.out.println("El aparejador es: "+ aparejador.getDni()+ " | " + aparejador.getNombre() + " | " + aparejador.getApellidos());
+        } else {
+        	aparejador = null;
+        	System.out.println("La lista de aparejadores está vacía, debe asignarse un aparejador al proyecto");
+        	System.out.println("");
+        }
+        
+        InspeccionTecnica certInspeccionTecnica = new InspeccionTecnica(fechaSolicitud, fechaEntrega, cliente, arquitecto, contable, categoria, fechaEmision, aparejador, costeCertificado);
+		return certInspeccionTecnica;	
 	}
 
 	@Override
 	public EficienciaEnergetica solicitarInformeEficienciaEnergetica(List<Aparejador> listaAparejadores, List<Arquitecto> listaArquitectos,
 			List<Contable> listaContables, Cliente cliente) {
-			
-			return null;		
+		
+		Acciones acciones = new Acciones();		
+		Scanner sn = new Scanner(System.in);
+		LocalDate fechaSolicitud; 
+		LocalDate fechaEntrega; 
+		Arquitecto arquitecto;
+		Contable contable;
+		Integer costeCertificado;
+		
+		fechaSolicitud = LocalDate.of(1, 1, 1);
+		System.out.println("La fecha de solicitud es del: " + fechaSolicitud);
+
+		fechaEntrega = LocalDate.of(1, 1, 2);
+		System.out.println("La fecha de entrega es del: " + fechaEntrega);
+		
+        System.out.println("¿Arquitecto?: ");   
+        Arquitecto arquitectoprueba = new Arquitecto("1","1","1");
+        listaArquitectos.add(arquitectoprueba);
+        if(!listaArquitectos.isEmpty()) {
+    	arquitecto = acciones.obtenerArquitecto(listaArquitectos);
+		System.out.println("El arquitecto es: "+ arquitecto.getDni()+ " | " + arquitecto.getNombre() + " | " + arquitecto.getApellidos());
+        } else {
+        	arquitecto = null;
+        	System.out.println("La lista de arquitectos está vacía, debe asignarse un arquitecto al proyecto");
+        	System.out.println("");
+        }
+        
+        System.out.println("¿Contable?: ");     
+        Contable contableprueba = new Contable("1","1","1");
+        listaContables.add(contableprueba);
+        if(!listaContables.isEmpty()) {
+        	accionesContable = new AccionesContable();
+        	contable  = acciones.obtenerContable(listaContables);
+	    	costeCertificado = accionesContable.establecerCostesCertificado(contable);
+			System.out.println("El contable es: "+ contable.getDni()+ " | " + contable.getNombre() + " | " + contable.getApellidos());
+        } else {
+    		costeCertificado = null;
+        	contable = null;
+        	System.out.println("La lista de contables está vacía, debe asignarse un contable al proyecto");
+        	System.out.println("");
+        }
+                
+		EficienciaEnergetica certEficienciaEnergetica = new EficienciaEnergetica(fechaSolicitud, fechaEntrega, cliente, arquitecto, contable, costeCertificado);
+		return certEficienciaEnergetica;		
+	}
+
+	@Override
+	public Proyectos seleccioneProyecto(List<Proyectos> listaProyectos) {
+		
+		Proyectos proyectos = null;
+		Scanner sn = new Scanner(System.in);
+	    boolean salir = false;
+	    int opcion; 
+	    String nombreProyecto; 
+	    if(listaProyectos == null) {
+		    listaProyectos = new ArrayList<>();
+	    }
+	    	System.out.println("Seleccione una opción sobre la que quieras realizar una opción");
+	    	
+			System.out.println("1. Seleccione el proyecto en el que quieras solicitar un certificado");
+	        System.out.println("2. Salir");
+	        
+	        System.out.println("Escribe una de las opciones");
+	        
+	        opcion = sn.nextInt();
+	        if(opcion == 1) {
+	        	if(!listaProyectos.isEmpty()) {
+			        for(Proyectos proyecto : listaProyectos) {
+				        System.out.println(proyecto.getNombre());	
+			        }
+	        	
+		        System.out.println("2. Seleccione el nombre del proyecto que quieras asociar al certificado: ");
+		        nombreProyecto = sn.next();
+		        for(Proyectos proyecto : listaProyectos) {
+		        	if(nombreProyecto.equalsIgnoreCase(proyecto.getNombre())) {
+		        		proyectos = new Proyectos();
+		        		proyectos = proyecto;
+		        		break;
+		        	}
+		        }
+	        }
+	     }	        
+		return proyectos;
 	}
 
 }

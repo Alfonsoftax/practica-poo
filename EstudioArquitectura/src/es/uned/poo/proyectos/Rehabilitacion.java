@@ -15,9 +15,9 @@ public class Rehabilitacion extends Proyectos{
 	public Rehabilitacion(LocalDate fechaSolicitud, LocalDate fechaEntrega, Integer duracionPrevista,
 			Integer presupuesto, LocalDate fechaInicioContratado, Integer duracion, Cliente cliente,
 			Arquitecto arquitecto, String direccion, Contable contable, Integer costeProyecto, Aparejador aparejador,
-			String tipo,Integer superficieAReformar) {
+			String tipo,Integer superficieAReformar, String nombre) {
 		super(fechaSolicitud, fechaEntrega, duracionPrevista, presupuesto, fechaInicioContratado, duracion, cliente, arquitecto,
-				direccion, contable, costeProyecto, aparejador, tipo);
+				direccion, contable, costeProyecto, aparejador, tipo, nombre);
 
 		this.superficieAReformar = superficieAReformar;
 	}

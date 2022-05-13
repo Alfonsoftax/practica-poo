@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import es.uned.poo.acciones.Acciones;
+import es.uned.poo.acciones.AccionesContable;
 import es.uned.poo.empleados.Administrador;
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
 import es.uned.poo.empleados.Clientes;
 import es.uned.poo.empleados.Contable;
-import es.uned.poo.interfacesPersonas.AccionesContableInterface;
 import es.uned.poo.personas.Cliente;
 import es.uned.poo.proyectos.Residenciales;
 
@@ -35,7 +35,7 @@ public class AccionesResidenciales {
 	Integer costeProyecto;
 	
 	Acciones acciones;
-	AccionesContableInterface accionesContable;
+	AccionesContable accionesContable;
 	
 	public Residenciales grabarProyectoResidencial(Residenciales proyectosResidenciales, Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, 
@@ -50,7 +50,10 @@ public class AccionesResidenciales {
         Aparejador aparejador;
         Arquitecto arquitecto;
         Contable contable;
+        String nombre;
         
+        System.out.println("¿Nombre del proyecto?: ");
+        nombre = sn.next();        
     	LocalDate fechaEntregaDate = LocalDate.of(1,1,1);
     	fechaEntrega = fechaEntregaDate;
         System.out.println("Fecha Entrega: " + fechaEntrega);
@@ -85,6 +88,7 @@ public class AccionesResidenciales {
         System.out.println("¿Contable?: ");     
         
         if(!listaContables.isEmpty()) {
+        	accionesContable = new AccionesContable();
 	    	contable  = this.acciones.obtenerContable(listaContables);
 	    	costeProyecto = this.accionesContable.establecerCostesProyecto(contable);
 	    	//costeProyecto;
@@ -119,7 +123,8 @@ public class AccionesResidenciales {
         numeroBaños = sn.nextInt(); 
 
         proyectosResidenciales = new Residenciales(fechaSolicitud, fechaEntrega, duracionPrevista, presupuesto, fechaInicioContratado,
-				duracion, cliente, arquitecto, direccion, contable, aparejador, superficie, superficieTerreno, plantas, numeroHabitaciones, numeroBaños, tipo, costeProyecto );		
+				duracion, cliente, arquitecto, direccion, contable, aparejador, superficie, superficieTerreno, plantas, numeroHabitaciones, 
+				numeroBaños, tipo, costeProyecto, nombre);		
         if(cliente != null && aparejador != null && arquitecto != null && contable != null) {
         	return proyectosResidenciales;
         } else {

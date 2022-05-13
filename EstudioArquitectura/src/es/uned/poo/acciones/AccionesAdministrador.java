@@ -7,6 +7,8 @@ import es.uned.poo.empleados.Administrador;
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
 import es.uned.poo.empleados.Contable;
+import es.uned.poo.general.Certificados;
+import es.uned.poo.general.Proyectos;
 import es.uned.poo.interfacesPersonas.AccionesAdministradorInterface;
 import es.uned.poo.interfacesPersonas.AccionesGenerales;
 import es.uned.poo.personas.Cliente;
@@ -603,7 +605,68 @@ public class AccionesAdministrador implements AccionesAdministradorInterface, Ac
 	    }			
 	}
 
-	
-	
-	
+
+
+	@Override
+	public void verMenuClientes(List<Cliente> listaClientes) {
+		Scanner sn = new Scanner(System.in);
+	    boolean salir = false;
+	    int opcion; 
+		
+	    for(Cliente cliente: listaClientes) {
+	    	System.out.println(cliente.getDni() + " || " + cliente.getNombre() + " || " + cliente.getApellidos());
+	    }
+	    
+	    while(!salir) {
+			System.out.println("1. Ver certificados asociados a clientes");
+	        System.out.println("2. Ver proyectos asociados a cliente");
+	        System.out.println("3. Salir");
+	        opcion = sn.nextInt();
+	        if(opcion == 1) {
+	        	this.verCertificadosAsociadoACliente(listaClientes);
+	        } else if(opcion == 2) {
+	        	this.verProyectosAsociadoACliente(listaClientes);
+	        }  else if(opcion == 3) {
+	        	salir = true;
+	        }	
+	        
+	    }
+		
+	}
+
+	private void verProyectosAsociadoACliente(List<Cliente> listaClientes) {
+		Scanner sn = new Scanner(System.in);
+	    boolean salir = false;
+	    String dniCliente; 
+	    
+		System.out.println("Selecciona DNI del cliente del que quieres ver los proyectos");
+		dniCliente = sn.next();
+		
+		for(Cliente cliente: listaClientes) {
+			if(dniCliente.equalsIgnoreCase(cliente.getDni())) {
+				for(Proyectos proyectos: cliente.getListaProyectos()) {
+					System.out.println(proyectos.toString());
+				}
+			}
+		} 
+	}
+
+
+
+	private void verCertificadosAsociadoACliente(List<Cliente> listaClientes) {
+		Scanner sn = new Scanner(System.in);
+	    boolean salir = false;
+	    String dniCliente; 
+	    
+		System.out.println("Selecciona nombre del cliente del que quieres ver los certificados");
+		dniCliente = sn.next();
+		
+		for(Cliente cliente: listaClientes) {
+			if(dniCliente.equalsIgnoreCase(cliente.getDni())) {
+				for(Certificados certificados: cliente.getListaCertificados()) {
+					System.out.println(certificados.toString());
+				}
+			}
+		}        
+	}		
 }
