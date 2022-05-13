@@ -35,7 +35,8 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
 	    int opcion; 
-		
+	    int opcion2; 
+
 	    while(!salir) {
 			System.out.println("1. Administrador");
 	        System.out.println("2. Arquitecto");

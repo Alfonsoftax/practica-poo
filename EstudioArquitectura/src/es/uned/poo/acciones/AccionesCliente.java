@@ -236,7 +236,7 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 		LocalDate fechaEntrega;
 		Arquitecto arquitecto;
 		Contable contable;
-		Integer costeCertificado = null;
+		Integer costeCertificado;
 
 		fechaSolicitud = LocalDate.of(1, 1, 1);
 		System.out.println("La fecha de solicitud es del: " + fechaSolicitud);
@@ -260,10 +260,12 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
         Contable contableprueba = new Contable("1","1","1");
         listaContables.add(contableprueba);
         if(!listaContables.isEmpty()) {
-	    	contable  = acciones.obtenerContable(listaContables);
-	    	costeCertificado = this.accionesContable.establecerCostesProyecto(contable);
+        	accionesContable = new AccionesContable();
+        	contable  = acciones.obtenerContable(listaContables);
+	    	costeCertificado = accionesContable.establecerCostesCertificado(contable);
 			System.out.println("El contable es: "+ contable.getDni()+ " | " + contable.getNombre() + " | " + contable.getApellidos());
         } else {
+    		costeCertificado = null;
         	contable = null;
         	System.out.println("La lista de contables está vacía, debe asignarse un contable al proyecto");
         	System.out.println("");
@@ -286,7 +288,8 @@ public class AccionesCliente implements AccionesClienteInterface, AccionesCertif
 		fechaEmisionCertificado = LocalDate.of(1, 1, 4);
 		System.out.println("La fecha de emisión del certificado es del: " + fechaEmisionCertificado);
 
-		Habitabilidad certHabitabilidad = new Habitabilidad(fechaSolicitud, fechaEntrega, cliente, arquitecto, contable, aparejador, fechaVisita, fechaEmisionCertificado, costeCertificado);
+		Habitabilidad certHabitabilidad = new Habitabilidad(fechaSolicitud, fechaEntrega, cliente, arquitecto, 
+				contable, aparejador, fechaVisita, fechaEmisionCertificado, costeCertificado);
 
 		return certHabitabilidad;
 	}

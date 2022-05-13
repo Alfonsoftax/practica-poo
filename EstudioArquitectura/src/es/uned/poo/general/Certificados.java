@@ -15,6 +15,7 @@ public class Certificados {
 	Arquitecto arquitecto;
 	Contable contable;
 	Integer costeCertificado;
+
 	//Histórico de vivienda Pensar cómo hacer
 	/**
 	 * @param fechaSolicitud
@@ -92,6 +93,19 @@ public class Certificados {
 	 */
 	public void setContable(Contable contable) {
 		this.contable = contable;
+	}
+	
+	/**
+	 * @return the costeCertificado
+	 */
+	public Integer getCosteCertificado() {
+		return costeCertificado;
+	}
+	/**
+	 * @param costeCertificado the costeCertificado to set
+	 */
+	public void setCosteCertificado(Integer costeCertificado) {
+		this.costeCertificado = costeCertificado;
 	}
 	
 	

@@ -84,7 +84,6 @@ public class AccionesNoResidenciales {
         if(!listaContables.isEmpty()) {
 	    	contable  = this.acciones.obtenerContable(listaContables);
 	    	costeProyecto = this.accionesContable.establecerCostesProyecto(contable);
-	    	//costeProyecto;
 			System.out.println("El contable es: "+ contable.getDni()+ " | " + contable.getNombre() + " | " + contable.getApellidos());
         } else {
         	contable = null;

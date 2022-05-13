@@ -45,18 +45,27 @@ public class AccionesContable implements AccionesContableInterface{
 	@Override
 	public Integer establecerCostesProyecto(Contable contable) {
 		Scanner sn = new Scanner(System.in);
-		Integer costeProyecto = null;
+		Integer costeProyecto;
 		System.out.println("¿Cuál es el precio que establece el contable" + contable.getNombre() + "?");
 		costeProyecto = sn.nextInt();
 		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
-		return costeProyecto;
-		
+		return costeProyecto;		
 	}
 
 	@Override
 	public void actualizarCostesCertificados() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public Integer establecerCostesCertificado(Contable contable) {
+		Scanner sn = new Scanner(System.in);
+		Integer costeCertificado;
+		System.out.println("¿Cuál es el precio que establece el contable" + contable.getNombre() + "?");
+		costeCertificado = sn.nextInt();
+		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
+		return costeCertificado;		
 	}
 
 
