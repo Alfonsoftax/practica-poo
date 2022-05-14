@@ -9,15 +9,6 @@ import es.uned.poo.empleados.Contable;
 import es.uned.poo.personas.Cliente;
 
 public interface AccionesAdministradorInterface {
-
-
-	public void asignarEmpleado();
-	public void verClientePorArquitecto();
-	public void verClientePorAparejador();
-	public void verViviendasFinObras();
-	public void verViviendasUltimoHabitabilidad();
-	public void verViviendasPorProyectosYCertificados();
-	public void verPlanificacionYEjecuciondeObras();
 	
 	//métodos para administradores
 	public void altaAdministrador(String nombre, String apellidos, String dni, List<Administrador> listaAdministradores);

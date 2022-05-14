@@ -13,55 +13,11 @@ import es.uned.poo.interfacesPersonas.AccionesAdministradorInterface;
 import es.uned.poo.interfacesPersonas.AccionesGenerales;
 import es.uned.poo.personas.Cliente;
 
-public class AccionesAdministrador implements AccionesAdministradorInterface, AccionesGenerales{
+public class AccionesAdministrador implements AccionesAdministradorInterface{
 
 	final String nombre="";
 	final String dni="";
 	final String apellidos="";
-
-	@Override
-	public void asignarEmpleado() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void verClientePorArquitecto() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verClientePorAparejador() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verViviendasFinObras() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verViviendasUltimoHabitabilidad() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verViviendasPorProyectosYCertificados() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verPlanificacionYEjecuciondeObras() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void verMenuAdministradores(List<Administrador> listaAdministradores) {
@@ -91,32 +47,6 @@ public class AccionesAdministrador implements AccionesAdministradorInterface, Ac
 	        }	        	        
 	    }
 		
-	}
-
-
-
-	@Override
-	public Arquitecto obtenerArquitecto(List<Arquitecto> listadoArquitectos) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Cliente obtenerCliente(List<Cliente> listadoClientes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contable obtenerContable(List<Contable> listadoContables) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Aparejador obtenerAparejador(List<Aparejador> listadoAparejadores) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -651,8 +581,6 @@ public class AccionesAdministrador implements AccionesAdministradorInterface, Ac
 		} 
 	}
 
-
-
 	private void verCertificadosAsociadoACliente(List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
@@ -668,5 +596,5 @@ public class AccionesAdministrador implements AccionesAdministradorInterface, Ac
 				}
 			}
 		}        
-	}		
+	}	
 }

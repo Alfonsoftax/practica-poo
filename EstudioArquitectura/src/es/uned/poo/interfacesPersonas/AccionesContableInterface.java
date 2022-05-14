@@ -17,7 +17,8 @@ public interface AccionesContableInterface {
 	
 	public void verDatosClientesAsignados(Contable contable, List<Cliente> listaClientes);
 	public Integer establecerCostesProyecto(Contable contable);
-	public void actualizarCostesCertificados();
+	public Integer actualizarCostesCertificados();
+	public Integer actualizarCostesProyectos();
 	public void mostrarMenuContable(Contable contable, List<Cliente> listaClientes);
 	public Integer establecerCostesCertificado(Contable contable);
 

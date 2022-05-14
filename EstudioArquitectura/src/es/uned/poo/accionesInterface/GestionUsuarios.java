@@ -18,6 +18,4 @@ public interface GestionUsuarios {
 	public void mostrarMenuClientes(Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, List<Contable> listaContables,List<Certificados> listaCertificados, List<Proyectos> listaProyectos);
 	public void darAlta();
-	public void darBaja();
-	public void modificar();
 }

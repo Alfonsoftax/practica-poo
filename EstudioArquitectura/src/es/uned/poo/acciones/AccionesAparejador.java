@@ -29,24 +29,6 @@ public class AccionesAparejador implements AccionesAparejadorInterface{
 	}
 
 	@Override
-	public void registroProyectosArquitectonicos() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void registroCertificados() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void verClientesPendienteCertificados() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void mostrarMenuAparejador(Aparejador aparejador, List<Cliente> listaClientes) {
 		Scanner sn = new Scanner(System.in);
 	    boolean salir = false;
@@ -104,6 +86,5 @@ public class AccionesAparejador implements AccionesAparejadorInterface{
 			}
 		}		
 	}
-
 
 }

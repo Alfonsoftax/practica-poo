@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import es.uned.poo.acciones.Acciones;
+import es.uned.poo.acciones.AccionesContable;
 import es.uned.poo.empleados.Administrador;
 import es.uned.poo.empleados.Aparejador;
 import es.uned.poo.empleados.Arquitecto;
@@ -34,7 +35,7 @@ public class AccionesNoResidenciales {
 
 	
 	Acciones acciones;
-	AccionesContableInterface accionesContable;
+	AccionesContable accionesContable;
 	
 	public NoResidenciales grabarProyectoNoResidencial(NoResidenciales proyectosNoResidenciales, Cliente cliente,
 			List<Aparejador> listaAparejadores,List<Arquitecto> listaArquitectos, 
@@ -42,6 +43,8 @@ public class AccionesNoResidenciales {
 		
 		Scanner sn = new Scanner(System.in);
 		acciones = new Acciones();
+		
+		accionesContable = new AccionesContable();
 		
         LocalDate todaysDate = LocalDate.now();
         fechaSolicitud = todaysDate;

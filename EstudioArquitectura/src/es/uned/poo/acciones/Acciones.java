@@ -49,27 +49,13 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 	        } else if(opcion == 2) {
 	        	accionesAdministrador.verMenuArquitectos(listaArquitectos);
 	        } else if(opcion == 3) {
-	        	this.modificar();
+	        	accionesAdministrador.verMenuAparejadores(listaAparejadores);
 	        } else if(opcion == 4) {
-	        	this.modificar();
+	        	accionesAdministrador.verMenuContables(listaContables);
 	        } else if(opcion == 5) {
 	        	salir = true;
 	        }	        	        
-	    }
-		
-		
-	}
-
-	@Override
-	public void darBaja() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void modificar() {
-		// TODO Auto-generated method stub
-		
+	    }		
 	}
 
 	@Override
@@ -212,4 +198,6 @@ public class Acciones implements GestionUsuarios, AccionesGenerales{
 		}
 		return ap;
 	}
+
+
 }

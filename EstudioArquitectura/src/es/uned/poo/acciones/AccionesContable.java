@@ -3,12 +3,12 @@ package es.uned.poo.acciones;
 import java.util.List;
 import java.util.Scanner;
 
-import es.uned.poo.empleados.Arquitecto;
 import es.uned.poo.empleados.Contable;
 import es.uned.poo.general.Certificados;
 import es.uned.poo.general.Proyectos;
 import es.uned.poo.interfacesPersonas.AccionesContableInterface;
 import es.uned.poo.personas.Cliente;
+import es.uned.poo.util.Utils;
 
 
 public class AccionesContable implements AccionesContableInterface{
@@ -18,13 +18,13 @@ public class AccionesContable implements AccionesContableInterface{
 		for(Cliente clientes: listaClientes) {
 			if(clientes.getListaProyectos() != null) {
 				for(Proyectos proyectos : clientes.getListaProyectos()) {
-					if(contable.getNombre().equalsIgnoreCase(proyectos.getArquitecto().getNombre())) {
+					if(contable.getNombre().equalsIgnoreCase(proyectos.getContable().getNombre())) {
 						System.out.println("El contable " + contable.toString() + " tiene asociado los siguientes proyectos");
 						System.out.println(proyectos.toString());
 					}
 				}
 				for(Certificados certificados : clientes.getListaCertificados()) {
-					if(contable.getNombre().equalsIgnoreCase(certificados.getArquitecto().getNombre())) {
+					if(contable.getNombre().equalsIgnoreCase(certificados.getContable().getNombre())) {
 						System.out.println("El contable " + contable.toString() + " tiene asociado los siguientes certificados");
 						System.out.println(certificados.toString());
 					}
@@ -56,11 +56,29 @@ public class AccionesContable implements AccionesContableInterface{
 	    }		
 	}
 
-	private void actualizacionProyectosYCertificados(Contable contable, List<Cliente> listaClientes) {
-		
-		System.out.println("Actualización proyectos y certificados");
-		
-		
+
+	public void actualizacionProyectosYCertificados(Contable contable, List<Cliente> listaClientes) {
+		Scanner sn = new Scanner(System.in);
+	    boolean salir = false;
+	    int opcion; 
+	    
+		System.out.println("Registro y actualización de proyectos y certificados");
+				
+	    while(!salir) {
+			System.out.println("1. Actualizar proyectos");
+	        System.out.println("2. Actualizar certificados certificados.");
+	        System.out.println("3. Salir");
+
+	        System.out.println("Escribe una de las opciones");
+	        opcion = sn.nextInt();
+	        if(opcion == 1) {
+	        	this.actualizarProyectos(contable, listaClientes);
+	        } else if(opcion == 2) {
+	        	this.actualizarCertificados(contable, listaClientes);
+	        }  else if(opcion == 3) {
+	        	salir = true;
+	        }	        	     	   
+	    }
 	}
 
 	@Override
@@ -72,10 +90,30 @@ public class AccionesContable implements AccionesContableInterface{
 		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: ");
 		return costeProyecto;
 	}
+	
 	@Override
-	public void actualizarCostesCertificados() {
-		// TODO Auto-generated method stub
+	public Integer actualizarCostesCertificados() {
+		Scanner sn = new Scanner(System.in);
+		Integer nuevoCoste = null;
+		System.out.println("Establece un nuevo coste del certificado");
+		nuevoCoste = sn.nextInt();
 		
+		System.out.println("El nuevo coste del certificado es: " + nuevoCoste);
+
+		return nuevoCoste;
+		
+	}
+	
+	@Override
+	public Integer actualizarCostesProyectos() {
+		Scanner sn = new Scanner(System.in);
+		Integer nuevoCoste = null;
+		System.out.println("Establece un nuevo coste del proyecto");
+		nuevoCoste = sn.nextInt();
+		
+		System.out.println("El nuevo coste del proyecto es: " + nuevoCoste);
+
+		return nuevoCoste;
 	}
 	
 	@Override
@@ -86,6 +124,111 @@ public class AccionesContable implements AccionesContableInterface{
 		costeCertificado = sn.nextInt();
 		System.out.println("El contable: " + contable.getNombre() + " establece un precio de: " + costeCertificado);
 		return costeCertificado;		
+	}
+	
+	
+	private void actualizarProyectos(Contable contable, List<Cliente> listaClientes) {
+		Scanner sn = new Scanner(System.in);
+	    String nombre;
+	    boolean salir = false;
+	    int opcion;
+		this.mostrarProyectosAsociados(contable, listaClientes);
+        System.out.println("Escribe el nombre de una de las opciones");
+        nombre = sn.next();
+        
+		for(Cliente clientes: listaClientes) {
+			for(Proyectos proyectos : clientes.getListaProyectos()) {
+				if(contable.getNombre().equalsIgnoreCase(proyectos.getContable().getNombre())) {
+					if(nombre.equalsIgnoreCase(proyectos.getNombre())) {
+					    while(!salir) {
+					        System.out.println("¿Qué valor quieres actualizar?");
+					        System.out.println("1- Nombre");
+					        System.out.println("2- Coste proyecto");
+					        System.out.println("3. Salir");
+
+					        System.out.println("Escribe una de las opciones");
+					        opcion = sn.nextInt();
+					        if(opcion == 1) {
+					        	proyectos = Utils.actualizarNombreP(proyectos);
+					        } else if(opcion == 2) {
+					    	    Integer nuevoCosteProyecto = this.actualizarCostesProyectos();
+					    	    proyectos.setCosteProyecto(nuevoCosteProyecto);
+					        }  else if(opcion == 3) {
+					        	salir = true;
+					        }	        	     	   
+					    }				        				        
+					}
+				}
+			}			
+		}                           		
+	}
+	
+	
+	private void actualizarCertificados(Contable contable, List<Cliente> listaClientes) {
+		
+		Scanner sn = new Scanner(System.in);
+	    String nombre;
+	    boolean salir = false;
+	    int opcion;
+	    
+		this.mostrarCertificadosAsociados(contable, listaClientes);
+        System.out.println("Escribe el nombre de una de las opciones");
+        nombre = sn.next();
+        
+		for(Cliente clientes: listaClientes) {
+			for(Certificados certificados : clientes.getListaCertificados()) {
+				if(contable.getNombre().equalsIgnoreCase(certificados.getContable().getNombre())) {
+					if(contable.getNombre().equalsIgnoreCase(certificados.getContable().getNombre())) {
+					    while(!salir) {
+					        System.out.println("¿Qué valor quieres actualizar?");
+					        System.out.println("1- Fecha entrega");
+					        System.out.println("2- Coste certificado");
+					        System.out.println("3. Salir");
+
+					        System.out.println("Escribe una de las opciones");
+					        opcion = sn.nextInt();
+					        if(opcion == 1) {
+					        	certificados = Utils.actualizarFechaEntrega(certificados);
+					        } else if(opcion == 2) {
+					    	    Integer nuevoCosteCer = this.actualizarCostesCertificados();
+					    	    certificados.setCosteCertificado(nuevoCosteCer);					        
+					    	}  else if(opcion == 3) {
+					        	salir = true;
+					        }	        	     	   
+					    }				        				        
+					}
+				}
+			}			
+		}
+		
+	}
+	
+	
+	private void mostrarCertificadosAsociados(Contable contable, List<Cliente> listaClientes) {
+		for(Cliente clientes: listaClientes) {
+			if(clientes.getListaProyectos() != null) {
+				for(Certificados certificados : clientes.getListaCertificados()) {
+					if(contable.getNombre().equalsIgnoreCase(certificados.getContable().getNombre())) {
+						System.out.println("El contable " + contable.toString() + " tiene asociado los siguientes certificados");
+						System.out.println(certificados.toString());
+					}
+				}
+			}
+		}
+	}
+	
+
+	private void mostrarProyectosAsociados(Contable contable, List<Cliente> listaClientes) {
+		for(Cliente clientes: listaClientes) {
+			if(clientes.getListaProyectos() != null) {
+				for(Proyectos proyectos : clientes.getListaProyectos()) {
+					if(contable.getNombre().equalsIgnoreCase(proyectos.getContable().getNombre())) {
+						System.out.println("El contable " + contable.toString() + " tiene asociado los siguientes proyectos");
+						System.out.println(proyectos.toString());
+					}
+				}
+			}
+		}
 	}
 
 
